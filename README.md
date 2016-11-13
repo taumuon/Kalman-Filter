@@ -14,3 +14,4 @@ http://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
 http://robotsforroboticists.com/kalman-filtering/
 https://en.wikipedia.org/wiki/Kalman_filter
 https://courses.cs.washington.edu/courses/cse466/11au/calendar/14-StateEstimation-posted.pdf
+http://www.cs.unc.edu/%7Ewelch/media/pdf/kalman_intro.pdf

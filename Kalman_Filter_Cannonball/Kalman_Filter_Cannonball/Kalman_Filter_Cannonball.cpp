@@ -15,8 +15,6 @@
 
 using State = std::array<double, 4>;
 
-// http://www.cs.unc.edu/%7Ewelch/media/pdf/kalman_intro.pdf
-
 int main()
 {
 	auto delta_time = 0.1;
