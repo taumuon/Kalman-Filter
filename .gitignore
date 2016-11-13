@@ -23,7 +23,23 @@
 *.a
 *.lib
 
+# VC++ files
+*.VC.db
+*.opendb
+*.sdf
+*.log
+*.tlog
+*.lastbuildstate
+*.idb
+*.pdb
+*.ilk
+*.ipch
+*.iobj
+*.ipdb
+*.suo
+
 # Executables
 *.exe
 *.out
 *.app
+
