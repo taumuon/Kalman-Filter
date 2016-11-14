@@ -56,7 +56,7 @@ int main()
 	initial_state_measured[2] = 300.0;
 	initial_state_measured[3] = initial_state[3];
 
-	KalmanFilter kalman_filter(A, B, Q, R, H, initial_state_measured);
+	KalmanFilter<4, 4> kalman_filter(A, B, Q, R, H, initial_state_measured);
 
 	for (int x = 0; x < 145; ++x) // TODO: range based for
 	{

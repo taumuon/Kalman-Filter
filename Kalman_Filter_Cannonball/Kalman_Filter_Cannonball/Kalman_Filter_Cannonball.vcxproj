@@ -156,7 +156,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CannonBallSystem.cpp" />
-    <ClCompile Include="KalmanFilter.cpp" />
     <ClCompile Include="Kalman_Filter_Cannonball.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
