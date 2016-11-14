@@ -58,7 +58,7 @@ int main()
 
 	KalmanFilter<4, 4> kalman_filter(A, B, Q, R, H, initial_state_measured);
 
-	for (int x = 0; x < 145; ++x) // TODO: range based for
+	for (int x = 0; x < 145; ++x)
 	{
 		Eigen::Vector4d state_vector(state.data());
 		auto updated_state = (A * state_vector) + (B * u);
@@ -69,7 +69,12 @@ int main()
 
 		auto estimated_state = kalman_filter.get_state_estimate();
 
-		kalman_filter.measurement(std::array<double, 4>{x_measured, state[1], y_measured, state[3]}, u);
+		Eigen::Matrix<double, 4, 1> measurement_vector;
+		measurement_vector(0, 0) = x_measured;
+		measurement_vector(1, 0) = state[1];
+		measurement_vector(2, 0) = y_measured;
+		measurement_vector(3, 0) = state[3];
+		kalman_filter.measurement(measurement_vector, u);
 
 		std::cout << state[0] << " " << state[2] << " "
 			      << x_measured << " " << y_measured << " "

@@ -34,14 +34,8 @@ public:
 		_prob_estimate.setIdentity();
 	}
 
-	void measurement(std::array<double, N> measured_state, Eigen::Matrix<double, N, 1> u)
+	void measurement(Eigen::Matrix<double, N, 1> measured_state_matrix, Eigen::Matrix<double, N, 1> u)
 	{
-		Eigen::Matrix<double, N, 1> measured_state_matrix;
-		measured_state_matrix(0, 0) = measured_state[0];
-		measured_state_matrix(1, 0) = measured_state[1];
-		measured_state_matrix(2, 0) = measured_state[2];
-		measured_state_matrix(3, 0) = measured_state[3];
-
 		// prediction step
 		auto predicted_state_estimate = (_a * _state_estimate) + (_b * u);
 		auto predicted_prob_estimate = ((_a * _prob_estimate) * (_a.transpose())) + _q;
