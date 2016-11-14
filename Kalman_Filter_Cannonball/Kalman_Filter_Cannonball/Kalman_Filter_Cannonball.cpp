@@ -25,11 +25,8 @@ int main()
 	auto A = cannonBallSystem.AMatrix();
 	auto B = cannonBallSystem.BMatrix();
 
-	// auto u = -9.81;
-	Eigen::Matrix<double, 4, 1> u;
-	u.setZero();
-	u(2, 0) = 0.5 * (delta_time * delta_time) * -9.81;
-	u(3, 0) = -9.81 * delta_time;
+	Eigen::Matrix<double, 1, 1> u;
+	u(0, 0) = -9.81;
 
 	std::default_random_engine generator;
 	std::normal_distribution<double> distribution(0.0, 1.0);
@@ -56,7 +53,7 @@ int main()
 	initial_state_measured[2] = 300.0;
 	initial_state_measured[3] = initial_state[3];
 
-	KalmanFilter<4, 4> kalman_filter(A, B, Q, R, H, initial_state_measured);
+	KalmanFilter<4, 1> kalman_filter(A, B, Q, R, H, initial_state_measured);
 
 	for (int x = 0; x < 145; ++x)
 	{

@@ -15,10 +15,7 @@ CannonBallSystem::CannonBallSystem(double delta_time)
 	_a(2, 3) = delta_time;
 
 	_b.setZero();
-	// _b(3, 0) = delta_time;
-
-	_b(2, 2) = 1.0;
-	_b(3, 3) = 1.0;
+	_b(3, 0) = delta_time;
 }
 
 Eigen::Matrix<double, 4, 1> CannonBallSystem::get_initial_state()

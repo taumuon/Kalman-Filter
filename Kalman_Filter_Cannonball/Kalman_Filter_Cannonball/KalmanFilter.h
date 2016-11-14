@@ -46,7 +46,7 @@ public:
 		auto kalman_gain = predicted_prob_estimate * _h.transpose() * (innovation_covariance.inverse());
 		_state_estimate = predicted_state_estimate + (kalman_gain * innovation);
 
-		// Eigen::Matrix4d eye;
+		// Eigen::Matrix<double, M, M> eye;
 		// eye.setIdentity();
 		// _prob_estimate = (eye - kalman_gain * _h) * predicted_prob_estimate;
 		// instead use
