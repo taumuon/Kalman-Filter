@@ -8,8 +8,7 @@ template <unsigned int N, unsigned int M>
 class KalmanFilter
 {
 private:
-	Eigen::Matrix<double, N, M> _a;
-	// Eigen::Matrix<double, 4, 1> _b;
+	Eigen::Matrix<double, N, N> _a;
 	Eigen::Matrix<double, N, M> _b;
 	Eigen::Matrix<double, N, N> _q; // process covariance
 	Eigen::Matrix<double, N, N> _r; // measurement covariance
@@ -17,24 +16,23 @@ private:
 	Eigen::Matrix<double, N, 1> _state_estimate;
 	Eigen::Matrix<double, N, N> _prob_estimate;
 public:
-	KalmanFilter(Eigen::Matrix4d a,
-		//Eigen::Matrix<double, 4, 1> b,
-		Eigen::Matrix<double, N, M> b,
-		Eigen::Matrix<double, N, N> q,
-		Eigen::Matrix<double, N, N> r,
-		Eigen::Matrix<double, N, N> h,
-		Eigen::Matrix<double, N, 1> state_estimate)
-	  : _a(a),
-		_b(b),
-		_q(q),
-		_r(r),
-		_h(h),
-		_state_estimate(state_estimate)
+	KalmanFilter(Eigen::Matrix<double, N, N> a,
+				 Eigen::Matrix<double, N, M> b,
+				 Eigen::Matrix<double, N, N> q,
+				 Eigen::Matrix<double, N, N> r,
+				 Eigen::Matrix<double, N, N> h,
+				 Eigen::Matrix<double, N, 1> state_estimate)
+			  : _a(a),
+				_b(b),
+				_q(q),
+				_r(r),
+				_h(h),
+				_state_estimate(state_estimate)
 	{
 		_prob_estimate.setIdentity();
 	}
 
-	void measurement(Eigen::Matrix<double, N, 1> measured_state_matrix, Eigen::Matrix<double, N, 1> u)
+	void measurement(Eigen::Matrix<double, N, 1> measured_state_matrix, Eigen::Matrix<double, M, 1> u)
 	{
 		// prediction step
 		auto predicted_state_estimate = (_a * _state_estimate) + (_b * u);
